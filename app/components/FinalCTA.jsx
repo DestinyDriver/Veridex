@@ -9,7 +9,7 @@ const reveal = (delay = 0) => ({
   transition: { duration: 0.9, ease: "easeOut", delay },
 });
 
-const skyImage = "https://lh3.googleusercontent.com/d/17K0YiN4DT0x91sSy3_QFBoIeMBkRp7fJ=w2400";
+const skyImage = "/footer.png";
 const ink = "#0a0907";
 const surface = "#ebe6db";
 
@@ -24,9 +24,15 @@ export default function FinalCTA() {
         <motion.div
           {...reveal(0)}
           className="w-12 h-12 rounded-2xl flex items-center justify-center"
-          style={{ background: "rgba(10,9,7,0.06)", border: "1px solid rgba(10,9,7,0.08)" }}
+          style={{
+            background: "rgba(10,9,7,0.06)",
+            border: "1px solid rgba(10,9,7,0.08)",
+          }}
         >
-          <span className="font-heading italic leading-none" style={{ color: ink, fontSize: 22, marginTop: -2 }}>
+          <span
+            className="font-heading italic leading-none"
+            style={{ color: ink, fontSize: 22, marginTop: -2 }}
+          >
             v
           </span>
         </motion.div>
@@ -45,7 +51,10 @@ export default function FinalCTA() {
           {...reveal(0.2)}
           onSubmit={(e) => e.preventDefault()}
           className="mt-10 flex items-center rounded-full pl-5 pr-1.5 py-1.5 w-full max-w-md"
-          style={{ background: "rgba(10,9,7,0.06)", border: "1px solid rgba(10,9,7,0.08)" }}
+          style={{
+            background: "rgba(10,9,7,0.06)",
+            border: "1px solid rgba(10,9,7,0.08)",
+          }}
         >
           <input
             type="email"
@@ -97,14 +106,25 @@ export default function FinalCTA() {
 
       <div style={{ borderTop: "1px solid rgba(10,9,7,0.08)" }}>
         <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-20 py-6 flex items-center justify-between flex-wrap gap-3">
-          <span className="text-xs font-body tracking-[0.12em]" style={{ color: "rgba(10,9,7,0.6)" }}>
+          <span
+            className="text-xs font-body tracking-[0.12em]"
+            style={{ color: "rgba(10,9,7,0.6)" }}
+          >
             VERIDEX© 2026
           </span>
           <div className="flex items-center gap-8">
-            <a href="#" className="text-xs font-body" style={{ color: "rgba(10,9,7,0.6)" }}>
+            <a
+              href="#"
+              className="text-xs font-body"
+              style={{ color: "rgba(10,9,7,0.6)" }}
+            >
               Terms of Service
             </a>
-            <a href="#" className="text-xs font-body" style={{ color: "rgba(10,9,7,0.6)" }}>
+            <a
+              href="#"
+              className="text-xs font-body"
+              style={{ color: "rgba(10,9,7,0.6)" }}
+            >
               Privacy Policy
             </a>
           </div>

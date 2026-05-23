@@ -11,13 +11,15 @@ const reveal = (delay = 0) => ({
 const quotes = [
   {
     n: "01",
-    quote: "We were burning four figures a month on idle Cursor seats and didn't know it. The first audit paid for the year.",
+    quote:
+      "We were burning four figures a month on idle Cursor seats and didn't know it. The first audit paid for the year.",
     name: "Maya Okafor",
     initials: "MO",
   },
   {
     n: "02",
-    quote: "Our AI bill grew faster than headcount. The dashboard turned a quarterly panic into a weekly decision.",
+    quote:
+      "Our AI bill grew faster than headcount. The dashboard turned a quarterly panic into a weekly decision.",
     name: "Daniel Hsu",
     initials: "DH",
   },
@@ -26,7 +28,8 @@ const quotes = [
 const cardStyle = {
   background: "#0e0c08",
   border: "1px solid rgba(243,234,216,0.08)",
-  boxShadow: "0 30px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(243,234,216,0.04)",
+  boxShadow:
+    "0 30px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(243,234,216,0.04)",
 };
 
 const avatarStyle = {
@@ -42,8 +45,13 @@ function QuoteCard({ q }) {
         {q.quote}
       </blockquote>
       <figcaption className="mt-6 flex items-center gap-2.5">
-        <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={avatarStyle}>
-          <span className="text-[10px] font-body font-medium text-[#f3ead8]">{q.initials}</span>
+        <div
+          className="w-7 h-7 rounded-full flex items-center justify-center shrink-0"
+          style={avatarStyle}
+        >
+          <span className="text-[10px] font-body font-medium text-[#f3ead8]">
+            {q.initials}
+          </span>
         </div>
         <span className="text-sm font-body text-[#f3ead8]">{q.name}</span>
       </figcaption>
@@ -58,10 +66,6 @@ export default function Testimonials() {
       className="relative w-full bg-[#0c0a06] px-8 md:px-16 lg:px-20 py-28 md:py-36 border-t border-[#f3ead8]/5 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-        <motion.p {...reveal(0)} className="text-sm font-body text-[#f3ead8]/60 text-center mb-16">
-          // Operators
-        </motion.p>
-
         <div className="relative">
           {/* Giant headline */}
           <motion.div
