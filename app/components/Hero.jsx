@@ -55,7 +55,7 @@ export default function Hero() {
 
           <motion.div {...fadeIn(1.1)} className="flex items-center gap-6 mt-6">
             <a
-              href="#"
+              href="/audit"
               className=" rounded-full px-5 py-2.5 text-sm font-medium text-black inline-flex items-center gap-2 border border-1 border-black"
             >
               <span className="relative z-10 inline-flex items-center gap-2 ">
@@ -64,7 +64,7 @@ export default function Hero() {
               </span>
             </a>
             <a
-              href="#"
+              href="/audit"
               className="text-sm font-medium text-black inline-flex items-center gap-2"
             >
               View Sample Report
