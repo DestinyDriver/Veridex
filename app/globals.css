@@ -46,6 +46,49 @@ body {
   pointer-events: none;
 }
 
+/* Form controls */
+.v-field {
+  background: rgba(243,234,216,0.04);
+  border: 1px solid rgba(243,234,216,0.12);
+  color: #f3ead8;
+  font-family: 'Barlow', sans-serif;
+  border-radius: 0.85rem;
+  padding: 0.75rem 0.95rem;
+  font-size: 0.92rem;
+  width: 100%;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  outline: none;
+  appearance: none;
+}
+.v-field::placeholder { color: rgba(243,234,216,0.35); }
+.v-field:hover { border-color: rgba(243,234,216,0.22); }
+.v-field:focus {
+  border-color: rgba(243,234,216,0.55);
+  background: rgba(243,234,216,0.07);
+}
+select.v-field {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='%23f3ead8' stroke-opacity='0.7' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.95rem center;
+  background-size: 11px 7px;
+  padding-right: 2.4rem;
+}
+select.v-field option { background: #100d08; color: #f3ead8; }
+
+.v-label {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(243,234,216,0.6);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.v-field[type=number]::-webkit-inner-spin-button,
+.v-field[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.v-field[type=number] { -moz-appearance: textfield; }
+
 /* Liquid glass — strong */
 .liquid-glass-strong {
   background: rgba(255, 255, 255, 0.01);

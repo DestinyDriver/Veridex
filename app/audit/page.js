@@ -7,20 +7,57 @@ export const metadata = {
 
 export default function AuditPage() {
   return (
-    <main className="min-h-screen bg-[#0c0a06] text-[#f3ead8]">
-      <div className="max-w-3xl mx-auto px-6 py-24">
-        <header className="mb-16 text-center">
-          <a href="/" className="inline-block font-heading italic text-2xl mb-12 opacity-60 hover:opacity-100 transition-opacity">
-            a
-          </a>
-          <h1 className="font-heading italic text-5xl md:text-6xl mb-4">
-            Audit your AI spend
-          </h1>
-          <p className="font-body text-lg text-[#f3ead8]/60 max-w-xl mx-auto">
-            Add every AI tool your team pays for. We&apos;ll show you exactly where you&apos;re overspending and how to fix it.
-          </p>
-        </header>
-        <SpendForm />
+    <main className="min-h-screen w-full bg-[#0c0a06] text-[#f3ead8]">
+      {/* Top bar */}
+      <header className="px-8 md:px-16 lg:px-20 py-6 flex items-center justify-between">
+        <a
+          href="/"
+          className="w-10 h-10 rounded-full flex items-center justify-center"
+          style={{ border: "1px solid rgba(243,234,216,0.18)" }}
+          aria-label="Veridex home"
+        >
+          <span
+            className="font-heading italic text-[#f3ead8] text-xl leading-none"
+            style={{ marginTop: "-2px" }}
+          >
+            v
+          </span>
+        </a>
+        <a
+          href="/"
+          className="text-sm font-body text-[#f3ead8]/65 hover:text-[#f3ead8] transition-colors"
+        >
+          ← Back to home
+        </a>
+      </header>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pt-6 pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          {/* LEFT — form column */}
+          <div className="lg:col-span-7">
+            <SpendForm />
+          </div>
+
+          {/* RIGHT — illustration */}
+          <aside className="lg:col-span-5 lg:sticky lg:top-24 lg:self-start hidden lg:block">
+            <div className="flex flex-col items-center text-center">
+              <img
+                src="/audit.png"
+                alt="Illustration of an analyst reviewing AI spend"
+                className="w-full h-auto max-w-[560px] select-none"
+                draggable="false"
+              />
+              <p
+                className="mt-8 font-heading italic text-[#f3ead8] text-2xl md:text-3xl leading-[1.1]"
+                style={{ letterSpacing: "-0.5px" }}
+              >
+                No hidden fees.
+                <br />
+                Just clarity on your AI spend.
+              </p>
+            </div>
+          </aside>
+        </div>
       </div>
     </main>
   );
