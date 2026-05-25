@@ -29,12 +29,16 @@ export default function ToolTile({ tool, selected, onToggle }) {
             border: "1px solid rgba(243,234,216,0.12)",
           }}
         >
-          <span
-            className="font-heading italic text-[#f3ead8] text-lg leading-none"
-            style={{ letterSpacing: "-0.5px" }}
-          >
-            {tool.mono}
-          </span>
+          {tool.icon ? (
+            <img src={tool.icon} alt={tool.name} className="w-5 h-5 object-contain" />
+          ) : (
+            <span
+              className="font-heading italic text-[#f3ead8] text-lg leading-none"
+              style={{ letterSpacing: "-0.5px" }}
+            >
+              {tool.mono}
+            </span>
+          )}
         </div>
         <div className="min-w-0 flex-1">
           <p className="font-body font-medium text-[#f3ead8] text-sm truncate">{tool.name}</p>

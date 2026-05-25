@@ -20,7 +20,17 @@ function Mono({ children, className = "" }) {
 }
 
 const tagStyle =
-  "liquid-glass rounded-full px-3 py-1 text-[11px] text-[#f3ead8]/85 font-body whitespace-nowrap";
+  "liquid-glass rounded-full px-3 py-1 text-[11px] text-[#f3ead8]/85 font-body whitespace-nowrap inline-flex items-center gap-1.5";
+
+const TOOL_ICONS = {
+  "ChatGPT Team": "/openai_dark.svg",
+  "Claude Teams": "https://cdn.simpleicons.org/claude/f3ead8",
+  "Cursor Pro": "https://cdn.simpleicons.org/cursor/f3ead8",
+  "Copilot Business": "https://cdn.simpleicons.org/githubcopilot/f3ead8",
+  Cursor: "https://cdn.simpleicons.org/cursor/f3ead8",
+  Copilot: "https://cdn.simpleicons.org/githubcopilot/f3ead8",
+  Codeium: "https://cdn.simpleicons.org/codeium/f3ead8",
+};
 
 export default function Problem() {
   return (
@@ -85,6 +95,7 @@ export default function Problem() {
                 "Copilot Business",
               ].map((t) => (
                 <span key={t} className={tagStyle}>
+                  {TOOL_ICONS[t] && <img src={TOOL_ICONS[t]} alt="" className="relative z-10 w-3 h-3 object-contain" />}
                   <span className="relative z-10">{t}</span>
                 </span>
               ))}
@@ -136,6 +147,7 @@ export default function Problem() {
             <div className="relative z-10 flex items-center gap-2 mt-6">
               {["Cursor", "Copilot", "Codeium"].map((t) => (
                 <span key={t} className={tagStyle}>
+                  {TOOL_ICONS[t] && <img src={TOOL_ICONS[t]} alt="" className="relative z-10 w-3 h-3 object-contain" />}
                   <span className="relative z-10">{t}</span>
                 </span>
               ))}

@@ -12,16 +12,11 @@ export default function AuditPage() {
       <header className="px-8 md:px-16 lg:px-20 py-6 flex items-center justify-between">
         <a
           href="/"
-          className="w-10 h-10 rounded-full flex items-center justify-center"
+          className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center"
           style={{ border: "1px solid rgba(243,234,216,0.18)" }}
           aria-label="Veridex home"
         >
-          <span
-            className="font-heading italic text-[#f3ead8] text-xl leading-none"
-            style={{ marginTop: "-2px" }}
-          >
-            v
-          </span>
+          <img src="/logo.png" alt="Veridex" className="w-10 h-10 object-cover" />
         </a>
         <a
           href="/"

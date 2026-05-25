@@ -17,7 +17,11 @@ export default function PlanRow({ tool, row, onChange }) {
             className="w-9 h-9 rounded-[0.6rem] flex items-center justify-center"
             style={{ background: "rgba(243,234,216,0.04)", border: "1px solid rgba(243,234,216,0.12)" }}
           >
-            <span className="font-heading italic text-[#f3ead8] text-sm leading-none">{tool.mono}</span>
+            {tool.icon ? (
+              <img src={tool.icon} alt={tool.name} className="w-4 h-4 object-contain" />
+            ) : (
+              <span className="font-heading italic text-[#f3ead8] text-sm leading-none">{tool.mono}</span>
+            )}
           </div>
           <div>
             <p className="font-body font-medium text-[#f3ead8] text-sm">{tool.name}</p>

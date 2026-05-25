@@ -23,18 +23,13 @@ export default function FinalCTA() {
       <div className="relative max-w-7xl mx-auto px-8 md:px-16 lg:px-20 pt-28 md:pt-36 pb-10 flex flex-col items-center text-center">
         <motion.div
           {...reveal(0)}
-          className="w-12 h-12 rounded-2xl flex items-center justify-center"
+          className="w-12 h-12 rounded-2xl overflow-hidden flex items-center justify-center"
           style={{
             background: "rgba(10,9,7,0.06)",
             border: "1px solid rgba(10,9,7,0.08)",
           }}
         >
-          <span
-            className="font-heading italic leading-none"
-            style={{ color: ink, fontSize: 22, marginTop: -2 }}
-          >
-            v
-          </span>
+          <img src="/logo.png" alt="Veridex" className="w-12 h-12 object-cover" />
         </motion.div>
 
         <motion.h2
