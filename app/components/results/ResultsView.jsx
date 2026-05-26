@@ -4,10 +4,9 @@ import { motion } from "framer-motion";
 import SavingsHero from "./SavingsHero";
 import ToolBreakdownTable from "./ToolBreakdown";
 import AISummary from "./AISummary";
-import CredexCTA from "./CredexCTA";
 import NextSteps from "./NextSteps";
-import LeadCapture from "./LeadCapture";
-import ShareBar from "./ShareBar";
+import ShareMenu from "./ShareMenu";
+import FinalCTA from "../FinalCTA";
 
 export default function ResultsView({ auditId }) {
   const [data, setData] = useState(null);
@@ -50,47 +49,41 @@ export default function ResultsView({ auditId }) {
   }
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-24">
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-        <header className="text-center mb-6">
-          <a href="/" className="inline-block font-heading italic text-2xl mb-12 opacity-60 hover:opacity-100 transition-opacity">a</a>
-        </header>
+    <div className="bg-[#0c0a06] text-[#f3ead8] min-h-screen">
+      <div className="max-w-5xl mx-auto px-6 pt-24 pb-16">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+          {/* Header with logo + share menu */}
+          <header className="flex items-center justify-between mb-10">
+            <a href="/" className="flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity">
+              <img src="/logo.png" alt="Veridex" className="w-8 h-8 rounded-full" />
+              <span className="font-heading italic text-xl">Veridex</span>
+            </a>
+            <ShareMenu auditId={auditId} totalSavings={data.totalMonthlySavings} />
+          </header>
 
-        <SavingsHero
-          totalMonthly={data.totalMonthlySavings}
-          totalAnnual={data.totalAnnualSavings}
-          isOptimal={data.isOptimal}
-          toolCount={data.toolCount}
-          teamSize={data.teamSize}
-          totalCurrentSpend={data.totalCurrentSpend}
-          totalRecommendedSpend={data.totalRecommendedSpend}
-          percentReduction={data.percentReduction}
-        />
+          <SavingsHero
+            totalMonthly={data.totalMonthlySavings}
+            totalAnnual={data.totalAnnualSavings}
+            isOptimal={data.isOptimal}
+            toolCount={data.toolCount}
+            teamSize={data.teamSize}
+            totalCurrentSpend={data.totalCurrentSpend}
+            totalRecommendedSpend={data.totalRecommendedSpend}
+            percentReduction={data.percentReduction}
+          />
 
-        {!data.isOptimal && <CredexCTA />}
+          <AISummary summary={data.summary} auditId={auditId} />
 
-        <AISummary summary={data.summary} auditId={auditId} />
+          <ToolBreakdownTable recommendations={data.recommendations} />
 
-        <ToolBreakdownTable recommendations={data.recommendations} />
+          {data.nextSteps?.length > 0 && (
+            <NextSteps steps={data.nextSteps} />
+          )}
+        </motion.div>
+      </div>
 
-        {data.nextSteps?.length > 0 && (
-          <NextSteps steps={data.nextSteps} />
-        )}
-
-        <LeadCapture
-          auditId={auditId}
-          highSavings={data.highSavings}
-          isOptimal={data.isOptimal}
-        />
-
-        <ShareBar auditId={auditId} totalSavings={data.totalMonthlySavings} />
-
-        <footer className="text-center mt-20 pb-12">
-          <a href="/audit" className="font-body text-sm text-[#f3ead8]/30 hover:text-[#f3ead8]/60 transition-colors">
-            ← Run another audit
-          </a>
-        </footer>
-      </motion.div>
+      {/* FinalCTA footer — same as landing page */}
+      <FinalCTA />
     </div>
   );
 }

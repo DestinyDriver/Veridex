@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "./Icons";
 
@@ -14,6 +15,35 @@ const ink = "#0a0907";
 const surface = "#ebe6db";
 
 export default function FinalCTA() {
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!email || submitting) return;
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, source: "consultation" }),
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Failed");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <section
       data-screen-label="final-cta" id="contact"
@@ -46,30 +76,55 @@ export default function FinalCTA() {
           you don&apos;t use.
         </motion.h2>
 
-        <motion.form
-          {...reveal(0.2)}
-          onSubmit={(e) => e.preventDefault()}
-          className="mt-10 flex items-center rounded-full pl-5 pr-1.5 py-1.5 w-full max-w-md"
-          style={{
-            background: "rgba(10,9,7,0.06)",
-            border: "1px solid rgba(10,9,7,0.08)",
-          }}
-        >
-          <input
-            type="email"
-            placeholder="Your email"
-            className="flex-1 bg-transparent outline-none border-0 text-sm font-body py-2"
-            style={{ color: ink }}
-          />
-          <button
-            type="submit"
-            className="inline-flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap"
-            style={{ background: ink, color: surface }}
+        {submitted ? (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-10 flex items-center gap-3 rounded-full px-6 py-3"
+            style={{
+              background: "rgba(10,9,7,0.06)",
+              border: "1px solid rgba(10,9,7,0.08)",
+            }}
           >
-            Book the Consultation
-            <ArrowUpRight className="h-4 w-4" />
-          </button>
-        </motion.form>
+            <span className="text-emerald-700 text-lg">✓</span>
+            <span className="text-sm font-body font-medium" style={{ color: ink }}>
+              We&apos;ll be in touch within 24 hours.
+            </span>
+          </motion.div>
+        ) : (
+          <motion.form
+            {...reveal(0.2)}
+            onSubmit={handleSubmit}
+            className="mt-10 flex items-center rounded-full pl-5 pr-1.5 py-1.5 w-full max-w-md"
+            style={{
+              background: "rgba(10,9,7,0.06)",
+              border: "1px solid rgba(10,9,7,0.08)",
+            }}
+          >
+            <input
+              type="email"
+              required
+              placeholder="Your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="flex-1 bg-transparent outline-none border-0 text-sm font-body py-2"
+              style={{ color: ink }}
+            />
+            <button
+              type="submit"
+              disabled={submitting}
+              className="inline-flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap disabled:opacity-50"
+              style={{ background: ink, color: surface }}
+            >
+              {submitting ? "Sending..." : "Book the Consultation"}
+              <ArrowUpRight className="h-4 w-4" />
+            </button>
+          </motion.form>
+        )}
+
+        {error && (
+          <p className="mt-3 text-red-600 text-xs font-body">{error}</p>
+        )}
 
         <style>{`
           [data-screen-label="final-cta"] input::placeholder {
@@ -78,7 +133,7 @@ export default function FinalCTA() {
         `}</style>
       </div>
 
-      {/* Giant wordmark with sky image clipped inside letterforms */}
+      {/* Giant wordmark */}
       <div className="relative w-full overflow-hidden px-4 md:px-8">
         <motion.h3
           {...reveal(0.3)}
