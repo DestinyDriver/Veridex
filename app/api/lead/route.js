@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { saveLead } from "../../../lib/store";
+import { sendConsultationConfirmEmail } from "../../../lib/resend";
 
 const recentSubmissions = new Map();
 const RATE_LIMIT_WINDOW = 60_000;
@@ -49,6 +50,13 @@ export async function POST(request) {
       teamSize: teamSize || null,
       source: source || "consultation",
     });
+
+    // Send confirmation email for consultation requests (fire-and-forget)
+    if (source === "consultation" || !source) {
+      sendConsultationConfirmEmail({ to: email }).catch((err) =>
+        console.error("Consultation email error:", err)
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

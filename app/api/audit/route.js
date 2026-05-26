@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { runAudit, generateFallbackSummary } from "../../../lib/audit-engine";
-import { saveAudit, saveLead } from "../../../lib/store";
+import { saveAudit, saveLead, createShareLink } from "../../../lib/store";
+import { sendAuditReportEmail } from "../../../lib/resend";
 
 export async function POST(request) {
   try {
@@ -37,6 +38,27 @@ export async function POST(request) {
         teamSize: orgSize || null,
         source: "audit",
       });
+
+      // Generate share link and send report email (fire-and-forget)
+      const origin =
+        request.headers.get("origin") ||
+        `${request.headers.get("x-forwarded-proto") || "https"}://${request.headers.get("host")}`;
+
+      createShareLink(id)
+        .then((shortCode) => {
+          const shareUrl = `${origin}/s/${shortCode}`;
+          return sendAuditReportEmail({
+            to: email,
+            orgName: orgName || null,
+            shareUrl,
+            totalCurrentSpend: results.totalCurrentSpend,
+            totalMonthlySavings: results.totalMonthlySavings,
+            totalAnnualSavings: results.totalAnnualSavings,
+            percentReduction: results.percentReduction,
+            toolCount: results.toolCount,
+          });
+        })
+        .catch((err) => console.error("Email send error:", err));
     }
 
     return NextResponse.json({ id, ...results, summary });
