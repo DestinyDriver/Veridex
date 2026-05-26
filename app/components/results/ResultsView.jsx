@@ -2,9 +2,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import SavingsHero from "./SavingsHero";
-import ToolBreakdown from "./ToolBreakdown";
-import DuplicateWarning from "./DuplicateWarning";
+import ToolBreakdownTable from "./ToolBreakdown";
 import AISummary from "./AISummary";
+import CredexCTA from "./CredexCTA";
+import NextSteps from "./NextSteps";
 import LeadCapture from "./LeadCapture";
 import ShareBar from "./ShareBar";
 
@@ -49,7 +50,7 @@ export default function ResultsView({ auditId }) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-24">
+    <div className="max-w-5xl mx-auto px-6 py-24">
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
         <header className="text-center mb-6">
           <a href="/" className="inline-block font-heading italic text-2xl mb-12 opacity-60 hover:opacity-100 transition-opacity">a</a>
@@ -61,22 +62,20 @@ export default function ResultsView({ auditId }) {
           isOptimal={data.isOptimal}
           toolCount={data.toolCount}
           teamSize={data.teamSize}
+          totalCurrentSpend={data.totalCurrentSpend}
+          totalRecommendedSpend={data.totalRecommendedSpend}
+          percentReduction={data.percentReduction}
         />
+
+        {!data.isOptimal && <CredexCTA />}
 
         <AISummary summary={data.summary} auditId={auditId} />
 
-        {data.duplicates?.length > 0 && (
-          <DuplicateWarning duplicates={data.duplicates} />
-        )}
+        <ToolBreakdownTable recommendations={data.recommendations} />
 
-        <section className="mt-16">
-          <h2 className="font-heading italic text-2xl mb-8">Per-tool breakdown</h2>
-          <div className="space-y-4">
-            {data.recommendations?.map((rec, i) => (
-              <ToolBreakdown key={rec.toolId} rec={rec} index={i} />
-            ))}
-          </div>
-        </section>
+        {data.nextSteps?.length > 0 && (
+          <NextSteps steps={data.nextSteps} />
+        )}
 
         <LeadCapture
           auditId={auditId}

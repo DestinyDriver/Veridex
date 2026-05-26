@@ -5,7 +5,6 @@ export async function POST(request) {
   try {
     const { results } = await request.json();
 
-    // Try Anthropic API if key is available
     const apiKey = process.env.ANTHROPIC_API_KEY;
     if (apiKey) {
       try {
@@ -16,7 +15,6 @@ export async function POST(request) {
       }
     }
 
-    // Fallback to templated summary
     const summary = generateFallbackSummary(results);
     return NextResponse.json({ summary, source: "template" });
   } catch {
@@ -25,18 +23,33 @@ export async function POST(request) {
 }
 
 async function generateAISummary(results, apiKey) {
-  const prompt = `You are a concise AI spend analyst. Based on this audit data, write a ~100-word personalized summary paragraph for the user. Be specific about their tools and numbers. Tone: professional, direct, helpful — not salesy.
+  const cancelled = results.recommendations
+    .filter((r) => r.recommended === "Cancel")
+    .map((r) => `${r.toolName} (saves $${r.youSave}/mo)`);
+
+  const downgraded = results.recommendations
+    .filter((r) => !r.isOptimized && r.recommended !== "Cancel" && r.youSave > 0)
+    .map((r) => `${r.toolName}: ${r.plan} → ${r.recommended} (saves $${r.youSave}/mo)`);
+
+  const optimized = results.recommendations
+    .filter((r) => r.isOptimized)
+    .map((r) => r.toolName);
+
+  const prompt = `You are a concise AI spend analyst writing a personalized audit summary. Be specific with numbers and tool names. Tone: professional, direct, analytical — not salesy.
 
 Audit data:
 - Team size: ${results.teamSize}
-- Use case: ${results.useCase}
-- Tools audited: ${results.recommendations.map((r) => `${r.toolName} (${r.planName}, ${r.seats} seats, $${r.currentMonthly}/mo)`).join("; ")}
-- Total monthly savings found: $${results.totalMonthlySavings}
-- Total annual savings: $${results.totalAnnualSavings}
-- Key recommendations: ${results.recommendations.filter((r) => r.primaryAction).map((r) => `${r.toolName}: ${r.primaryAction.action} (saves $${r.primaryAction.savings}/mo)`).join("; ")}
-- Duplicate tool categories: ${results.duplicates.length > 0 ? results.duplicates.map((d) => `${d.category}: ${d.tools.join(", ")}`).join("; ") : "None"}
+- Primary use case: ${results.useCase}
+- Current total spend: $${results.totalCurrentSpend}/mo
+- Recommended spend: $${results.totalRecommendedSpend}/mo
+- Monthly savings: $${results.totalMonthlySavings}/mo ($${results.totalAnnualSavings}/yr)
+- Reduction: ${results.percentReduction}%
+- Tools: ${results.recommendations.map((r) => `${r.toolName} (${r.plan}, ${r.seats} seats, $${r.currentMonthly}/mo)`).join("; ")}
+${cancelled.length > 0 ? `- Cancel (duplicates): ${cancelled.join("; ")}` : ""}
+${downgraded.length > 0 ? `- Downgrade: ${downgraded.join("; ")}` : ""}
+${optimized.length > 0 ? `- Already optimized: ${optimized.join(", ")}` : ""}
 
-Write the summary now. No greeting, no sign-off. Just the paragraph.`;
+Write a ~120-word summary paragraph. Mention current spend, savings amount, biggest opportunity, any duplicate tools, and over-provisioned tiers. End with a clear next-step recommendation. No greeting, no sign-off.`;
 
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
@@ -47,7 +60,7 @@ Write the summary now. No greeting, no sign-off. Just the paragraph.`;
     },
     body: JSON.stringify({
       model: "claude-sonnet-4-20250514",
-      max_tokens: 200,
+      max_tokens: 300,
       messages: [{ role: "user", content: prompt }],
     }),
   });

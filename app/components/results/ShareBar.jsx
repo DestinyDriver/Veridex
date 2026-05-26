@@ -9,7 +9,7 @@ export default function ShareBar({ auditId, totalSavings }) {
     : `/share/${auditId}`;
 
   const shareText = totalSavings > 0
-    ? `Just found $${totalSavings}/mo in AI tool savings with Veridex. Free audit:`
+    ? `Just found $${totalSavings.toLocaleString()}/mo in AI tool savings with Veridex. Free audit:`
     : "Just audited my AI tool spend with Veridex. Free audit:";
 
   async function copyLink() {

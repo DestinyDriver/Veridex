@@ -5,65 +5,103 @@ All prices in `lib/pricing-data.js` are per-user/per-month unless noted. Last ve
 ---
 
 ## Cursor
-- Hobby: $0/user/month — https://www.cursor.com/pricing — verified 2026-05-26
-- Pro: $20/user/month — https://www.cursor.com/pricing — verified 2026-05-26
-- Pro+: $60/user/month — https://www.cursor.com/pricing — verified 2026-05-26
-- Ultra: $200/user/month — https://www.cursor.com/pricing — verified 2026-05-26
-- Business: $40/user/month — https://www.cursor.com/pricing — verified 2026-05-26
-- Enterprise: $40/user/month (custom) — https://www.cursor.com/pricing — verified 2026-05-26
+
+| Plan       | Price           | Source                         |
+| ---------- | --------------- | ------------------------------ |
+| Hobby      | $0              | https://www.cursor.com/pricing |
+| Pro        | $20/mo          | https://www.cursor.com/pricing |
+| Pro+       | $60/mo          | https://www.cursor.com/pricing |
+| Ultra      | $200/mo         | https://www.cursor.com/pricing |
+| Business   | $40/mo          | https://www.cursor.com/pricing |
+| Enterprise | $40/mo (custom) | https://www.cursor.com/pricing |
 
 ## GitHub Copilot
-- Free: $0/user/month — https://github.com/features/copilot#pricing — verified 2026-05-26
-- Pro: $10/user/month — https://github.com/features/copilot#pricing — verified 2026-05-26
-- Pro+: $39/user/month — https://github.com/features/copilot#pricing — verified 2026-05-26
-- Business: $19/user/month — https://github.com/features/copilot#pricing — verified 2026-05-26
-- Enterprise: $39/user/month — https://github.com/features/copilot#pricing — verified 2026-05-26
+
+| Plan       | Price  | Source                                      |
+| ---------- | ------ | ------------------------------------------- |
+| Free       | $0     | https://github.com/features/copilot#pricing |
+| Pro        | $10/mo | https://github.com/features/copilot#pricing |
+| Pro+       | $39/mo | https://github.com/features/copilot#pricing |
+| Business   | $19/mo | https://github.com/features/copilot#pricing |
+| Enterprise | $39/mo | https://github.com/features/copilot#pricing |
 
 ## Claude (Anthropic)
-- Free: $0/user/month — https://www.anthropic.com/pricing — verified 2026-05-26
-- Pro: $20/user/month — https://www.anthropic.com/pricing — verified 2026-05-26
-- Max 5x: $100/user/month — https://www.anthropic.com/pricing — verified 2026-05-26
-- Max 20x: $200/user/month — https://www.anthropic.com/pricing — verified 2026-05-26
-- Team: $30/user/month — https://www.anthropic.com/pricing — verified 2026-05-26
-- Enterprise: $30/user/month (custom) — https://www.anthropic.com/pricing — verified 2026-05-26
-- API Direct: Usage-based — https://www.anthropic.com/pricing#api — verified 2026-05-26
+
+| Plan       | Price           | Source                                |
+| ---------- | --------------- | ------------------------------------- |
+| Free       | $0              | https://www.anthropic.com/pricing     |
+| Pro        | $20/mo          | https://www.anthropic.com/pricing     |
+| Max 5x     | $100/mo         | https://www.anthropic.com/pricing     |
+| Max 20x    | $200/mo         | https://www.anthropic.com/pricing     |
+| Team       | $30/mo          | https://www.anthropic.com/pricing     |
+| Enterprise | $30/mo (custom) | https://www.anthropic.com/pricing     |
+| API Direct | Usage-based     | https://www.anthropic.com/pricing#api |
 
 ## ChatGPT (OpenAI)
-- Plus: $20/user/month — https://openai.com/chatgpt/pricing/ — verified 2026-05-26
-- Team: $30/user/month — https://openai.com/chatgpt/pricing/ — verified 2026-05-26
-- Enterprise: Custom pricing — https://openai.com/chatgpt/pricing/ — verified 2026-05-26
-- API Direct: Usage-based — https://openai.com/api/pricing/ — verified 2026-05-26
+
+| Plan       | Price          | Source                              |
+| ---------- | -------------- | ----------------------------------- |
+| Plus       | $20/mo         | https://openai.com/chatgpt/pricing/ |
+| Team       | $30/mo         | https://openai.com/chatgpt/pricing/ |
+| Enterprise | Custom pricing | https://openai.com/chatgpt/pricing/ |
+| API Direct | Usage-based    | https://openai.com/api/pricing/     |
 
 ## Anthropic API
-- Pay-as-you-go: Usage-based — https://www.anthropic.com/pricing#api — verified 2026-05-26
+
+| Plan          | Price       | Source                                |
+| ------------- | ----------- | ------------------------------------- |
+| Pay-as-you-go | Usage-based | https://www.anthropic.com/pricing#api |
 
 ## OpenAI API
-- Pay-as-you-go: Usage-based — https://openai.com/api/pricing/ — verified 2026-05-26
+
+| Plan          | Price       | Source                          |
+| ------------- | ----------- | ------------------------------- |
+| Pay-as-you-go | Usage-based | https://openai.com/api/pricing/ |
 
 ## Gemini (Google)
-- Pro (Google One AI Premium): $20/user/month — https://one.google.com/about/plans — verified 2026-05-26
-- Ultra / Advanced: $250/user/month — https://ai.google.dev/pricing — verified 2026-05-26
-- API (Vertex AI): Usage-based — https://cloud.google.com/vertex-ai/pricing — verified 2026-05-26
+
+| Plan                        | Price       | Source                                     |
+| --------------------------- | ----------- | ------------------------------------------ |
+| Pro (Google One AI Premium) | $20/mo      | https://one.google.com/about/plans         |
+| Ultra / Advanced            | $250/mo     | https://ai.google.dev/pricing              |
+| API (Vertex AI)             | Usage-based | https://cloud.google.com/vertex-ai/pricing |
 
 ## Windsurf (Codeium)
-- Free: $0/user/month — https://codeium.com/pricing — verified 2026-05-26
-- Pro: $15/user/month — https://codeium.com/pricing — verified 2026-05-26
-- Team: $35/user/month — https://codeium.com/pricing — verified 2026-05-26
+
+| Plan | Price  | Source                      |
+| ---- | ------ | --------------------------- |
+| Free | $0     | https://codeium.com/pricing |
+| Pro  | $15/mo | https://codeium.com/pricing |
+| Team | $35/mo | https://codeium.com/pricing |
 
 ## Perplexity
-- Free: $0/user/month — https://www.perplexity.ai/pro — verified 2026-05-26
-- Pro: $20/user/month — https://www.perplexity.ai/pro — verified 2026-05-26
-- Enterprise: $40/user/month — https://www.perplexity.ai/enterprise — verified 2026-05-26
+
+| Plan       | Price  | Source                               |
+| ---------- | ------ | ------------------------------------ |
+| Free       | $0     | https://www.perplexity.ai/pro        |
+| Pro        | $20/mo | https://www.perplexity.ai/pro        |
+| Enterprise | $40/mo | https://www.perplexity.ai/enterprise |
 
 ## Notion AI
-- AI add-on: $8/user/month — https://www.notion.so/pricing — verified 2026-05-26
-- Business + AI: $24/user/month — https://www.notion.so/pricing — verified 2026-05-26
+
+| Plan          | Price  | Source                        |
+| ------------- | ------ | ----------------------------- |
+| AI add-on     | $8/mo  | https://www.notion.so/pricing |
+| Business + AI | $24/mo | https://www.notion.so/pricing |
 
 ## Midjourney
-- Basic: $10/user/month — https://www.midjourney.com/account — verified 2026-05-26
-- Standard: $30/user/month — https://www.midjourney.com/account — verified 2026-05-26
-- Pro: $60/user/month — https://www.midjourney.com/account — verified 2026-05-26
+
+| Plan     | Price  | Source                             |
+| -------- | ------ | ---------------------------------- |
+| Basic    | $10/mo | https://www.midjourney.com/account |
+| Standard | $30/mo | https://www.midjourney.com/account |
+| Pro      | $60/mo | https://www.midjourney.com/account |
 
 ## Replit
-- Core: $20/user/month — https://replit.com/pricing — verified 2026-05-26
-- Teams: $40/user/month — https://replit.com/pricing — verified 2026-05-26
+
+| Plan  | Price  | Source                     |
+| ----- | ------ | -------------------------- |
+| Core  | $20/mo | https://replit.com/pricing |
+| Teams | $40/mo | https://replit.com/pricing |
+
+---

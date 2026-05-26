@@ -2,7 +2,16 @@
 import { motion } from "framer-motion";
 import CountUp from "./CountUp";
 
-export default function SavingsHero({ totalMonthly, totalAnnual, isOptimal, toolCount, teamSize }) {
+export default function SavingsHero({
+  totalMonthly,
+  totalAnnual,
+  isOptimal,
+  toolCount,
+  teamSize,
+  totalCurrentSpend,
+  totalRecommendedSpend,
+  percentReduction,
+}) {
   if (isOptimal) {
     return (
       <motion.div
@@ -30,20 +39,49 @@ export default function SavingsHero({ totalMonthly, totalAnnual, isOptimal, tool
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.1 }}
-      className="text-center py-12"
     >
-      <p className="font-body text-sm uppercase tracking-wider text-[#f3ead8]/40 mb-3">
-        Total potential savings
-      </p>
-      <div className="flex items-baseline justify-center gap-3 mb-2">
-        <span className="font-heading italic text-6xl md:text-8xl">
-          $<CountUp end={totalMonthly} />
-        </span>
-        <span className="font-body text-xl text-[#f3ead8]/40">/mo</span>
+      {/* Main savings banner */}
+      <div className="text-center py-10 px-6 border border-emerald-500/20 rounded-3xl bg-emerald-500/[0.03] mb-8">
+        <p className="font-body text-xs uppercase tracking-widest text-emerald-400/70 mb-4 flex items-center justify-center gap-2">
+          <span>📊</span> Spend Audit Completed
+        </p>
+        <div className="flex items-baseline justify-center gap-2 mb-2">
+          <span className="font-heading italic text-6xl md:text-8xl text-emerald-400">
+            $<CountUp end={totalMonthly} />
+          </span>
+          <span className="font-body text-xl text-[#f3ead8]/40">/mo</span>
+        </div>
+        <p className="font-body text-lg text-[#f3ead8]/60 mb-1">
+          You could save <span className="text-[#f3ead8]/90 font-semibold">${totalAnnual.toLocaleString()}</span> annually
+        </p>
+        {percentReduction > 0 && (
+          <p className="font-body text-sm text-[#f3ead8]/40">
+            That is a {percentReduction}% reduction of your current AI SaaS burn rate
+          </p>
+        )}
       </div>
-      <p className="font-body text-lg text-[#f3ead8]/50">
-        <span className="text-[#f3ead8]/80 font-medium">${totalAnnual.toLocaleString()}</span> per year · {toolCount} tool{toolCount !== 1 ? "s" : ""} audited · team of {teamSize}
-      </p>
+
+      {/* Three-column summary */}
+      <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="border border-[#f3ead8]/10 rounded-2xl p-5 text-center">
+          <p className="font-body text-[10px] uppercase tracking-widest text-red-400/70 mb-2">Current Spend</p>
+          <p className="font-heading italic text-2xl md:text-3xl">
+            ${totalCurrentSpend?.toLocaleString() || "—"}<span className="text-base text-[#f3ead8]/40">/mo</span>
+          </p>
+        </div>
+        <div className="border border-[#f3ead8]/10 rounded-2xl p-5 text-center">
+          <p className="font-body text-[10px] uppercase tracking-widest text-emerald-400/70 mb-2">Recommended Spend</p>
+          <p className="font-heading italic text-2xl md:text-3xl">
+            ${totalRecommendedSpend?.toLocaleString() || "—"}<span className="text-base text-[#f3ead8]/40">/mo</span>
+          </p>
+        </div>
+        <div className="border border-emerald-500/20 bg-emerald-500/[0.03] rounded-2xl p-5 text-center">
+          <p className="font-body text-[10px] uppercase tracking-widest text-emerald-400/70 mb-2">Annual Savings</p>
+          <p className="font-heading italic text-2xl md:text-3xl text-emerald-400">
+            ${totalAnnual?.toLocaleString() || "—"}
+          </p>
+        </div>
+      </div>
     </motion.div>
   );
 }
