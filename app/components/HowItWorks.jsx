@@ -272,8 +272,8 @@ export default function HowItWorks() {
   return (
     <section
       ref={sectionRef}
-      data-screen-label="how-it-works"
-      className="relative w-full bg-[#0c0a06] overflow-hidden border-t border-[#f3ead8]/5"
+      data-screen-label="how-it-works" id="how-it-works"
+      className="relative w-full bg-[#0c0a06] overflow-hidden  border-[#f3ead8]/5"
     >
       {/* Desktop pinned scene */}
       <div className="hidden md:flex h-screen flex-col px-8 md:px-16 lg:px-20 pt-24 pb-16">

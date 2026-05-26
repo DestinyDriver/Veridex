@@ -15,6 +15,7 @@ const quotes = [
       "We were burning four figures a month on idle Cursor seats and didn't know it. The first audit paid for the year.",
     name: "Maya Okafor",
     initials: "MO",
+    avatar: "https://i.pravatar.cc/150?img=47",
   },
   {
     n: "02",
@@ -22,6 +23,7 @@ const quotes = [
       "Our AI bill grew faster than headcount. The dashboard turned a quarterly panic into a weekly decision.",
     name: "Daniel Hsu",
     initials: "DH",
+    avatar: "https://i.pravatar.cc/150?img=11",
   },
 ];
 
@@ -46,12 +48,20 @@ function QuoteCard({ q }) {
       </blockquote>
       <figcaption className="mt-6 flex items-center gap-2.5">
         <div
-          className="w-7 h-7 rounded-full flex items-center justify-center shrink-0"
+          className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 overflow-hidden"
           style={avatarStyle}
         >
-          <span className="text-[10px] font-body font-medium text-[#f3ead8]">
-            {q.initials}
-          </span>
+          {q.avatar ? (
+            <img
+              src={q.avatar}
+              alt={q.name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <span className="text-[10px] font-body font-medium text-[#f3ead8]">
+              {q.initials}
+            </span>
+          )}
         </div>
         <span className="text-sm font-body text-[#f3ead8]">{q.name}</span>
       </figcaption>
@@ -62,7 +72,7 @@ function QuoteCard({ q }) {
 export default function Testimonials() {
   return (
     <section
-      data-screen-label="testimonials"
+      data-screen-label="testimonials" id="reviews"
       className="relative w-full bg-[#0c0a06] px-8 md:px-16 lg:px-20 py-28 md:py-36 border-t border-[#f3ead8]/5 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">

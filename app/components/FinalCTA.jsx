@@ -16,7 +16,7 @@ const surface = "#ebe6db";
 export default function FinalCTA() {
   return (
     <section
-      data-screen-label="final-cta"
+      data-screen-label="final-cta" id="contact"
       className="relative w-full overflow-hidden"
       style={{ background: surface, color: ink }}
     >
@@ -29,7 +29,11 @@ export default function FinalCTA() {
             border: "1px solid rgba(10,9,7,0.08)",
           }}
         >
-          <img src="/logo.png" alt="Veridex" className="w-12 h-12 object-cover" />
+          <img
+            src="/logo.png"
+            alt="Veridex"
+            className="w-12 h-12 object-cover"
+          />
         </motion.div>
 
         <motion.h2
@@ -59,10 +63,10 @@ export default function FinalCTA() {
           />
           <button
             type="submit"
-            className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap"
             style={{ background: ink, color: surface }}
           >
-            Talk to founders
+            Book the Consultation
             <ArrowUpRight className="h-4 w-4" />
           </button>
         </motion.form>

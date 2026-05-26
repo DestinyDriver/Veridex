@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { getToolList, USE_CASES, ORG_SIZES } from "../../../lib/pricing-data";
+import { getToolList, USE_CASES } from "../../../lib/pricing-data";
 import ToolTile from "./ToolTile";
 import PlanRow from "./PlanRow";
 import Stepper from "./Stepper";
@@ -116,7 +116,7 @@ export default function SpendForm() {
       selected.every(
         (id) => rows[id]?.planId && Number(rows[id]?.seats) >= 1,
       )) ||
-    (step === 3 && org.name && org.size && org.email);
+    (step === 3 && org.name && Number(org.size) >= 1 && org.email);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -319,20 +319,14 @@ export default function SpendForm() {
               </div>
               <div>
                 <label className="v-label">Organization size</label>
-                <select
+                <input
+                  type="number"
+                  min="1"
+                  placeholder="e.g. 25"
                   className="v-field"
                   value={org.size}
                   onChange={(e) => setOrg({ ...org, size: e.target.value })}
-                >
-                  <option value="" disabled>
-                    Select size…
-                  </option>
-                  {ORG_SIZES.map((s) => (
-                    <option key={s} value={s} className="bg-[#100d08]">
-                      {s} people
-                    </option>
-                  ))}
-                </select>
+                />
               </div>
               <div>
                 <label className="v-label">Primary use case</label>

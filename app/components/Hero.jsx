@@ -27,7 +27,7 @@ function StatCard({ icon, value, label }) {
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-black">
+    <section id="hero" className="relative w-full h-screen overflow-hidden bg-black">
       <SpotlightReveal
         baseImageSrc="/hero/base.png"
         revealImageSrc="/hero/layerHero.png"
@@ -71,22 +71,6 @@ export default function Hero() {
               <PlayIcon className="h-4 w-4" />
             </a>
           </motion.div>
-
-          <motion.div
-            {...fadeIn(1.3)}
-            className="flex items-stretch gap-4 mt-8"
-          >
-            <StatCard
-              icon={<ClockIcon className="h-7 w-7 text-black" />}
-              value="34.5 Min"
-              label="Average Videos Watch Time"
-            />
-            <StatCard
-              icon={<GlobeIcon className="h-7 w-7 text-black" />}
-              value="2.8B+"
-              label="Users Across the Globe"
-            />
-          </motion.div>
         </div>
 
         <motion.div
@@ -95,7 +79,7 @@ export default function Hero() {
         >
           <div className="liquid-glass rounded-full px-3.5 py-1">
             <span className="relative z-10 text-xs font-medium text-black font-body">
-              Collaborating with top aerospace pioneers globally
+              Collaborating with AI-first startups globally
             </span>
           </div>
           <div className="flex items-center gap-12 md:gap-16 font-heading italic text-black text-2xl md:text-3xl tracking-tight">

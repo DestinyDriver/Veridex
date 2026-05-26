@@ -12,28 +12,36 @@ const fadeIn = (delay = 0) => ({
 
 const items = [
   {
-    q: "How is the audit priced?",
-    a: "A flat monthly subscription based on team size and number of connected tools. No usage fees, no take-rate on savings. Cancel anytime.",
+    q: "What is Veridex?",
+    a: "Veridex is an AI spend intelligence platform that helps startups identify wasted AI SaaS spending across tools like ChatGPT, Claude, Cursor, Copilot, Gemini, and more.",
   },
   {
-    q: "What data do you actually read?",
-    a: "Billing metadata, seat assignments, and aggregate usage counts. We never read prompts, completions, code, or document contents — read-only access scoped to the minimum required.",
+    q: "How does the Veridex audit work?",
+    a: "Veridex analyzes your AI subscriptions, billing data, seat activity, and usage patterns to detect idle seats, overlapping tools, unnecessary premium plans, and pricing inefficiencies. The platform then generates an optimization report with projected savings.",
   },
   {
-    q: "Which AI tools are supported?",
-    a: "OpenAI, Anthropic, Cursor, GitHub Copilot, Gemini, Perplexity, Notion AI, Midjourney, Replit, plus 40+ others via SAML/SSO billing connectors. New tools added weekly.",
+    q: "Which AI tools does Veridex support?",
+    a: "Veridex supports OpenAI, Claude, Gemini, Cursor, GitHub Copilot, Perplexity, Notion AI, Midjourney, Windsurf, Replit, and other major AI SaaS platforms, with new integrations added regularly.",
+  },
+  {
+    q: "Does Veridex read our prompts or internal data?",
+    a: "No. Veridex only accesses billing metadata, subscription details, seat activity, and aggregate usage analytics required for cost optimization. Your prompts, code, chats, and documents are never accessed.",
+  },
+  {
+    q: "How are savings recommendations generated?",
+    a: "Veridex combines deterministic analysis with AI reasoning to identify duplicate tools, underused plans, inactive seats, and inefficient pricing structures based on real usage behavior.",
+  },
+  {
+    q: "Can Veridex detect overlapping AI tools?",
+    a: "Yes. Veridex identifies tools performing similar workflows across your stack — such as Cursor, Copilot, Claude, or Gemini — and recommends consolidation opportunities to reduce unnecessary spend.",
   },
   {
     q: "How accurate are the savings estimates?",
-    a: "Recommendations are grounded in your last 90 days of invoices and seat activity. Each estimate links back to the line item and assumption — auditable, not pulled from thin air.",
+    a: "Savings projections are generated from actual billing history, plan utilization, and seat activity. Every recommendation includes contextual reasoning and estimated monthly and yearly impact.",
   },
   {
-    q: "Do you resell credits?",
-    a: "Only inside our enterprise tier and only with the upstream vendor's blessing. Self-serve customers see neutral recommendations, never a markup-shaped suggestion.",
-  },
-  {
-    q: "How fast is onboarding?",
-    a: "Most teams connect their stack and see their first audit in under 30 minutes. Larger teams with custom SSO routes typically need a single working session with our success team.",
+    q: "How long does onboarding take?",
+    a: "Most teams connect their AI stack and receive their first audit within minutes. Larger organizations with custom SSO or procurement workflows may require additional setup.",
   },
 ];
 
@@ -43,7 +51,7 @@ export default function FAQ() {
   return (
     <section
       data-screen-label="faq"
-      className="relative w-full bg-[#0c0a06] px-8 md:px-16 lg:px-20 py-28 md:py-36 border-t border-[#f3ead8]/5"
+      className="relative w-full bg-[#0c0a06] px-8 md:px-16 lg:px-20 py-28 md:py-36  border-[#f3ead8]/5"
     >
       <div className="max-w-4xl mx-auto">
         <div className="text-center">
@@ -57,11 +65,15 @@ export default function FAQ() {
             {...fadeIn(0.08)}
             className="mt-6 text-base md:text-lg font-body font-light text-[#f3ead8]/70 max-w-xl mx-auto leading-snug"
           >
-            Quick answers on pricing, privacy, supported tools, and how we keep the numbers honest.
+            Quick answers on pricing, privacy, supported tools, and how we keep
+            the numbers honest.
           </motion.p>
         </div>
 
-        <motion.div {...fadeIn(0.16)} className="mt-16 border-t border-[#f3ead8]/15">
+        <motion.div
+          {...fadeIn(0.16)}
+          className="mt-16 border-t border-[#f3ead8]/15"
+        >
           {items.map((it, i) => {
             const isOpen = open === i;
             return (
@@ -78,7 +90,10 @@ export default function FAQ() {
                 </button>
                 <div
                   className="overflow-hidden transition-all duration-300 ease-out"
-                  style={{ maxHeight: isOpen ? 240 : 0, opacity: isOpen ? 1 : 0 }}
+                  style={{
+                    maxHeight: isOpen ? 240 : 0,
+                    opacity: isOpen ? 1 : 0,
+                  }}
                 >
                   <p className="pb-6 pr-10 text-sm md:text-base text-[#f3ead8]/70 font-body font-light leading-snug max-w-2xl">
                     {it.a}

@@ -35,7 +35,7 @@ const TOOL_ICONS = {
 export default function Problem() {
   return (
     <section
-      data-screen-label="problem"
+      data-screen-label="problem" id="problems"
       className="relative w-full bg-[#0c0a06] px-8 md:px-16 lg:px-20 py-28 md:py-36 border-t border-[#f3ead8]/5"
     >
       <div className="max-w-7xl mx-auto">
