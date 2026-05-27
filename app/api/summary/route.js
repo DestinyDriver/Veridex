@@ -5,7 +5,7 @@ export async function POST(request) {
   try {
     const { results } = await request.json();
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = process.env.OPENAI_API_KEY;
     if (apiKey) {
       try {
         const summary = await generateAISummary(results, apiKey);
@@ -51,25 +51,25 @@ ${optimized.length > 0 ? `- Already optimized: ${optimized.join(", ")}` : ""}
 
 Write a ~120-word summary paragraph. Mention current spend, savings amount, biggest opportunity, any duplicate tools, and over-provisioned tiers. End with a clear next-step recommendation. No greeting, no sign-off.`;
 
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
+  const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-api-key": apiKey,
-      "anthropic-version": "2023-06-01",
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "claude-sonnet-4-20250514",
+      model: process.env.OPENAI_MODEL || "gpt-4o-mini",
       max_tokens: 300,
+      temperature: 0.4,
       messages: [{ role: "user", content: prompt }],
     }),
   });
 
   if (!res.ok) {
     const err = await res.text();
-    throw new Error(`Anthropic API error: ${res.status} ${err}`);
+    throw new Error(`OpenAI API error: ${res.status} ${err}`);
   }
 
   const data = await res.json();
-  return data.content[0].text;
+  return data.choices[0].message.content;
 }

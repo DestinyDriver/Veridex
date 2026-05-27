@@ -24,9 +24,9 @@ The symptom: a team of 12 seats on Cursor Ultra. The engine said "downgrade all 
 
 I reversed the LLM summary's output format.
 
-Going in, I'd designed `/api/summary` to return structured JSON — `{ headline, body, nextSteps[] }` — so the frontend could render each piece with its own typography. I prompted Claude Sonnet 4 to "respond with valid JSON only, no prose outside the object." For about three days this looked like it worked. Then I noticed the route crashed in production logs.
+Going in, I'd designed `/api/summary` to return structured JSON — `{ headline, body, nextSteps[] }` — so the frontend could render each piece with its own typography. I prompted `gpt-4o-mini` to "respond with valid JSON only, no prose outside the object." For about three days this looked like it worked. Then I noticed the route crashed in production logs.
 
-The crash was Claude wrapping the JSON in a Markdown code fence (` ```json ... ``` `) maybe 5% of the time. My `JSON.parse` choked. I tried two fixes: stripping fences before parsing, and a stricter prompt with "no markdown, no code blocks, raw JSON only." The stripping worked but felt fragile; the stricter prompt reduced fence frequency but didn't eliminate it. At 10k audits/day that's still 500 daily errors I'd be fighting.
+The crash was the model wrapping the JSON in a Markdown code fence (` ```json ... ``` `) maybe 5% of the time. My `JSON.parse` choked. I tried two fixes: stripping fences before parsing, and a stricter prompt with "no markdown, no code blocks, raw JSON only." The stripping worked but felt fragile; the stricter prompt reduced fence frequency but didn't eliminate it. I also tried OpenAI's `response_format: { type: "json_object" }` — which solved the fence issue but the model started padding the JSON with extra keys it invented (`confidence`, `disclaimer`) that I then had to defensively strip. At 10k audits/day either fix was still 500 daily errors I'd be fighting.
 
 **The reversal:** I dropped structured JSON entirely. The summary is now a single plain-text paragraph (~120 words). The frontend renders it as one `<p>`. I lost the per-section typography. I gained 100% reliability.
 
@@ -58,7 +58,7 @@ In priority order, with reasoning:
 
 ## 4. How I used AI tools
 
-I used **Cave with Claude** as my primary coding assistant, **Claude.ai** in the browser for short-form thinking out loud (debate-with-myself stuff), and **the Anthropic API directly** in production for the audit summary feature. No Cursor, no Copilot — I wanted a clear separation between code I wrote, code I directed an agent to write, and code shipped by an LLM-at-runtime.
+I used **Cave with Claude** as my primary coding assistant, **Claude.ai** in the browser for short-form thinking out loud (debate-with-myself stuff), and **the OpenAI Chat Completions API** (gpt-4o-mini) in production for the audit summary feature. No Cursor, no Copilot — I wanted a clear separation between code I wrote, code I directed an agent to write, and code shipped by an LLM-at-runtime. The split is deliberate: Claude for code generation where I evaluate output by reading diffs, OpenAI for runtime prose where the model never sees its own output and consistency matters more than reasoning depth.
 
 **What I delegated freely:** boilerplate React components (form fields, modals, the FAQ accordion), Tailwind class scaffolding, Supabase client wrapper boilerplate, the HTML email templates in `lib/resend.js`, and most of the writing in this repo's docs (drafted by me, refined with Claude).
 

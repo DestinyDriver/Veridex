@@ -9,9 +9,9 @@ The tool only makes **one** in-product LLM call: a personalized audit-summary na
 ## Prompt 1 — Audit summary narrative
 
 **Where it runs:** `app/api/summary/route.js` → `generateAISummary()`
-**Model:** `claude-sonnet-4-20250514`
+**Model:** `gpt-4o-mini` (OpenAI Chat Completions API; configurable via `OPENAI_MODEL`)
 **When it fires:** After `runAudit()` finishes. The deterministic engine has already produced numbers and recommendations; this prompt turns those into a short, human-readable paragraph the user sees at the top of their report.
-**Fallback:** If the call fails or `ANTHROPIC_API_KEY` is missing, `generateFallbackSummary()` runs a template string and the response is tagged `source: "template"` instead of `"ai"`. The user never sees an error.
+**Fallback:** If the call fails or `OPENAI_API_KEY` is missing, `generateFallbackSummary()` runs a template string and the response is tagged `source: "template"` instead of `"ai"`. The user never sees an error.
 
 ### The actual prompt
 
