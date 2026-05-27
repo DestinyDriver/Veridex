@@ -50,11 +50,10 @@ function DotsIcon() {
 export default function ShareMenu({ auditId, totalSavings }) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [shareUrl, setShareUrl] = useState(
-    typeof window !== "undefined"
-      ? `${window.location.origin}/share/${auditId}`
-      : `/share/${auditId}`
-  );
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    (typeof window !== "undefined" ? window.location.origin : "");
+  const [shareUrl, setShareUrl] = useState(`${baseUrl}/share/${auditId}`);
   const ref = useRef(null);
 
   // Generate short share link on first open

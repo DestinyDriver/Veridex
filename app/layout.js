@@ -1,5 +1,6 @@
 import { Instrument_Serif, Barlow } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "../lib/site";
 
 const instrumentSerif = Instrument_Serif({
   weight: ["400"],
@@ -15,6 +16,7 @@ const barlow = Barlow({
 });
 
 export const metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Veridex — Stop Paying for AI You Don't Use",
   description:
     "Discover hidden AI overspending across ChatGPT, Claude, Cursor, and more. Built for startups that scale fast.",

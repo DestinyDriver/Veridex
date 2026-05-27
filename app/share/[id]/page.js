@@ -1,8 +1,9 @@
 import ShareView from "../../components/share/ShareView";
+import { SITE_URL } from "../../../lib/site";
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://veridex.vercel.app";
+  const baseUrl = SITE_URL;
 
   return {
     title: "AI Spend Audit Report — Veridex",

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAudit } from "../../../../lib/store";
+import { SITE_DISPLAY } from "../../../../lib/site";
 
 export async function GET(request, { params }) {
   const { id } = await params;
@@ -261,7 +262,7 @@ function generateReportHTML(audit) {
     <!-- Page footer -->
     <div style="padding:0 48px 24px;">
       <div style="border-top:1px solid #eee9e0;padding-top:16px;display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:10px;color:#b0aa9f;letter-spacing:0.1em;">VERIDEX© ${new Date().getFullYear()} · veridex.dev</span>
+        <span style="font-size:10px;color:#b0aa9f;letter-spacing:0.1em;">VERIDEX© ${new Date().getFullYear()} · ${SITE_DISPLAY}</span>
         <span style="font-size:10px;color:#b0aa9f;">Page 2 of 2</span>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createShareLink } from "../../../lib/store";
+import { resolveOrigin } from "../../../lib/site";
 
 export async function POST(request) {
   try {
@@ -13,9 +14,7 @@ export async function POST(request) {
     }
 
     const shortCode = await createShareLink(auditId);
-    const origin =
-      request.headers.get("origin") ||
-      `${request.headers.get("x-forwarded-proto") || "https"}://${request.headers.get("host")}`;
+    const origin = resolveOrigin(request);
 
     return NextResponse.json({
       shortCode,

@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 
 export default function ShareBar({ auditId, totalSavings }) {
   const [copied, setCopied] = useState(false);
-  const shareUrl = typeof window !== "undefined"
-    ? `${window.location.origin}/share/${auditId}`
-    : `/share/${auditId}`;
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    (typeof window !== "undefined" ? window.location.origin : "");
+  const shareUrl = `${baseUrl}/share/${auditId}`;
 
   const shareText = totalSavings > 0
     ? `Just found $${totalSavings.toLocaleString()}/mo in AI tool savings with Veridex. Free audit:`

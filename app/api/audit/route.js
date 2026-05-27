@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { runAudit, generateFallbackSummary } from "../../../lib/audit-engine";
 import { saveAudit, saveLead, createShareLink } from "../../../lib/store";
 import { sendAuditReportEmail } from "../../../lib/resend";
+import { resolveOrigin } from "../../../lib/site";
 
 export async function POST(request) {
   try {
@@ -40,9 +41,7 @@ export async function POST(request) {
       });
 
       // Generate share link and send report email (fire-and-forget)
-      const origin =
-        request.headers.get("origin") ||
-        `${request.headers.get("x-forwarded-proto") || "https"}://${request.headers.get("host")}`;
+      const origin = resolveOrigin(request);
 
       createShareLink(id)
         .then((shortCode) => {
