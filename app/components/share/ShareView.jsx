@@ -6,7 +6,15 @@ import ToolBreakdownTable from "../results/ToolBreakdown";
 import AISummary from "../results/AISummary";
 import NextSteps from "../results/NextSteps";
 import ShareMenu from "../results/ShareMenu";
-import FinalCTA from "../FinalCTA";
+
+function ArrowUpRightIcon() {
+  return (
+    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M7 17L17 7" />
+      <path d="M7 7h10v10" />
+    </svg>
+  );
+}
 
 export default function ShareView({ auditId }) {
   const [data, setData] = useState(null);
@@ -26,7 +34,7 @@ export default function ShareView({ auditId }) {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen bg-[#0c0a06]">
         <div className="w-8 h-8 border-2 border-[#f3ead8]/20 border-t-[#f3ead8] rounded-full animate-spin" />
       </div>
     );
@@ -34,7 +42,7 @@ export default function ShareView({ auditId }) {
 
   if (error) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen bg-[#0c0a06]">
         <div className="text-center max-w-md">
           <p className="font-body text-[#f3ead8]/60 mb-6">{error}</p>
           <a href="/audit" className="inline-flex px-6 py-3 bg-[#f3ead8] text-[#0c0a06] rounded-full font-body font-medium text-sm">
@@ -47,9 +55,9 @@ export default function ShareView({ auditId }) {
 
   return (
     <div className="bg-[#0c0a06] text-[#f3ead8] min-h-screen">
-      <div className="max-w-5xl mx-auto px-6 pt-24 pb-16">
+      <div className="max-w-5xl mx-auto px-6 pt-24 pb-20">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-          {/* Header with logo + shared badge + share menu */}
+          {/* Header */}
           <header className="flex items-center justify-between mb-10">
             <div className="flex items-center gap-4">
               <a href="/" className="flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity">
@@ -81,11 +89,32 @@ export default function ShareView({ auditId }) {
           {data.nextSteps?.length > 0 && (
             <NextSteps steps={data.nextSteps} />
           )}
+
+          {/* Run audit CTA */}
+          <div className="mt-16 text-center">
+            <a
+              href="/audit"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#f3ead8] text-[#0c0a06] rounded-full font-body font-semibold text-sm hover:bg-[#f3ead8]/90 transition-colors"
+            >
+              Run your free audit
+              <ArrowUpRightIcon />
+            </a>
+            <p className="font-body text-xs text-[#f3ead8]/20 mt-3">
+              Takes 2 minutes · No credit card required
+            </p>
+          </div>
+
+          {/* Footer */}
+          <footer className="mt-16 pt-8 border-t border-[#f3ead8]/6 flex items-center justify-between">
+            <span className="font-body text-[11px] tracking-[0.1em] text-[#f3ead8]/20">
+              VERIDEX© {new Date().getFullYear()}
+            </span>
+            <span className="font-body text-xs text-[#f3ead8]/20">
+              Powered by <a href="/" className="underline hover:text-[#f3ead8]/40 transition-colors">Veridex</a>
+            </span>
+          </footer>
         </motion.div>
       </div>
-
-      {/* FinalCTA footer — same as landing page */}
-      <FinalCTA />
     </div>
   );
 }

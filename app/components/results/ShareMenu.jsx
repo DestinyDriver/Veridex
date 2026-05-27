@@ -109,7 +109,7 @@ export default function ShareMenu({ auditId, totalSavings }) {
   }
 
   function downloadPDF() {
-    window.print();
+    window.open(`/api/report/${auditId}`, "_blank");
     setOpen(false);
   }
 

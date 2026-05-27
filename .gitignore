@@ -46,3 +46,6 @@ next-env.d.ts
 /.repomixignore
 /repomix-output.xml
 nul
+
+/need.txt
+/supabase-schema.sql

@@ -43,7 +43,12 @@ export default function SavingsHero({
       {/* Main savings banner */}
       <div className="text-center py-10 px-6 border border-emerald-500/20 rounded-3xl bg-emerald-500/[0.03] mb-8">
         <p className="font-body text-xs uppercase tracking-widest text-emerald-400/70 mb-4 flex items-center justify-center gap-2">
-          <span>📊</span> Spend Audit Completed
+          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10" />
+            <line x1="12" y1="20" x2="12" y2="4" />
+            <line x1="6" y1="20" x2="6" y2="14" />
+          </svg>
+          Spend Audit Completed
         </p>
         <div className="flex items-baseline justify-center gap-2 mb-2">
           <span className="font-heading italic text-6xl md:text-8xl text-emerald-400">

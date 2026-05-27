@@ -13,7 +13,9 @@ export default function AISummary({ summary }) {
     >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <span className="text-base">✨</span>
+          <svg className="w-5 h-5 text-[#f3ead8]/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z" />
+          </svg>
           <span className="font-heading italic text-lg">Your Personalized Audit</span>
         </div>
         <span className="font-body text-[10px] uppercase tracking-widest text-[#f3ead8]/30 border border-[#f3ead8]/10 rounded-full px-3 py-1">
