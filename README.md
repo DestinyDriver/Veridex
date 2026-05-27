@@ -12,12 +12,12 @@ Veridex is a self-serve audit tool that analyzes a team's AI subscription spend 
 
 ## 2. Screenshots & Demo
 
-|                           |                            |
-| ------------------------- | -------------------------- |
-| Landing page              | ![](./Screenshots/ss1.png) |
-| Audit form                | ![](./Screenshots/ss1.png) |
-| Results & recommendations | ![](./Screenshots/ss1.png) |
-| Email report              | ![](./Screenshots/ss1.png) |
+|                           |                           |
+| ------------------------- | ------------------------- |
+| Landing page              | ![](/Screenshots/ss1.png) |
+| Audit form                | ![](/Screenshots/ss1.png) |
+| Results & recommendations | ![](/Screenshots/ss1.png) |
+| Email report              | ![](/Screenshots/ss1.png) |
 
 **Video walkthrough:**
 
@@ -48,6 +48,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://<your-project>.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=<service-role-key>
 RESEND_API_KEY=<resend-api-key>
 RESEND_FROM_EMAIL=reports@yourdomain.com
+OPENAI_API_KEY=your-openai-api-key
 ```
 
 ### Run locally
