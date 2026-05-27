@@ -20,6 +20,13 @@ export const metadata = {
   title: "Veridex — Stop Paying for AI You Don't Use",
   description:
     "Discover hidden AI overspending across ChatGPT, Claude, Cursor, and more. Built for startups that scale fast.",
+  icons: {
+    icon: [
+      { url: "/logo.png", type: "image/png" },
+    ],
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {
