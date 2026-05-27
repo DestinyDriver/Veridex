@@ -12,12 +12,12 @@ Veridex is a self-serve audit tool that analyzes a team's AI subscription spend 
 
 ## 2. Screenshots & Demo
 
-|                           |                           |
-| ------------------------- | ------------------------- |
-| Landing page              | ![](/Screenshots/ss1.png) |
-| Audit form                | ![](/Screenshots/ss1.png) |
-| Results & recommendations | ![](/Screenshots/ss1.png) |
-| Email report              | ![](/Screenshots/ss1.png) |
+|                           |                                   |
+| ------------------------- | --------------------------------- |
+| Landing page              | ![](./assets/Screenshots/ss1.png) |
+| Audit form                | ![](./assets/Screenshots/ss1.png) |
+| Results & recommendations | ![](./assets/Screenshots/ss1.png) |
+| Email report              | ![](./assets/Screenshots/ss1.png) |
 
 **Video walkthrough:**
 
