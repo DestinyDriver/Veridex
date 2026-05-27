@@ -6,7 +6,7 @@
 
 Veridex is a self-serve audit tool that analyzes a team's AI subscription spend (Cursor, GitHub Copilot, Claude, ChatGPT, Gemini, Perplexity, and more) and recommends cheaper plans based on actual team size and usage. It produces a personalized savings report, emails it to the user, and generates a shareable short link. Built for engineering managers, founders, and finance leads at small-to-mid-size teams (5–200 seats) who have accumulated AI tool sprawl and want a quick, unbiased second opinion before their next renewal.
 
-**Deployed URL:**
+**Deployed URL:** [https://veridex-destinydriver.vercel.app/](https://veridex-destinydriver.vercel.app/)
 
 ---
 
@@ -20,6 +20,30 @@ Veridex is a self-serve audit tool that analyzes a team's AI subscription spend 
 | Email report              | ![](./assets/Screenshots/ss4.png) |
 
 **Video walkthrough:**
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=Wp8SJNqnVRk">
+    <img src="https://img.youtube.com/vi/Wp8SJNqnVRk/maxresdefault.jpg" width="800" alt="Watch the demo video" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=Wp8SJNqnVRk">
+    ▶ Watch the full walkthrough
+  </a>
+</p>
+
+---
+
+<iframe 
+  width="100%" 
+  height="500" 
+  src="https://www.youtube.com/embed/Wp8SJNqnVRk?autoplay=1&mute=1" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+  allowfullscreen>
+</iframe>
 
 ---
 
@@ -111,7 +135,7 @@ Five trade-offs I consciously made, and the reasoning behind each.
 
 ## 5. Deployed URL
 
-🔗
+🔗 [https://veridex-destinydriver.vercel.app/](https://veridex-destinydriver.vercel.app/)
 
 ---
 

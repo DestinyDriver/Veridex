@@ -12,13 +12,13 @@ Here's what I actually did, what I tried, and why I think it failed.
 
 Between **May 23 and May 27, 2026**, I cold-reached out to **~34 people** across four surfaces:
 
-| Surface | Sent | Replies | Calls booked |
-|---|---|---|---|
-| X (Twitter) DMs to Eng Ops / DevEx-titled founders | 14 | 1 (a "thanks, busy this week, maybe later") | 0 |
-| LinkedIn connection requests + note to Eng Chiefs of Staff at Series A/B startups | 12 | 2 connection accepts, 0 replies to the note | 0 |
-| Indie Hackers Slack (DMs to people in #saas + #starting-up) | 5 | 0 | 0 |
-| College network — seniors now working at startups, asked in our batch WhatsApp | 3 | 1 reply ("send me the link when it's live") | 0 |
-| **Total** | **34** | **4** | **0** |
+| Surface                                                                           | Sent   | Replies                                     | Calls booked |
+| --------------------------------------------------------------------------------- | ------ | ------------------------------------------- | ------------ |
+| X (Twitter) DMs to Eng Ops / DevEx-titled founders                                | 14     | 0                                           | 0            |
+| LinkedIn connection requests + note to Eng Chiefs of Staff at Series A/B startups | 12     | 2 connection accepts, 0 replies to the note | 0            |
+| Indie Hackers Slack (DMs to people in #saas + #starting-up)                       | 5      | 0                                           | 0            |
+| College network — seniors now working at startups, asked in our batch WhatsApp    | 3      | 1 reply ("send me the link when it's live") | 0            |
+| **Total**                                                                         | **34** | **4**                                       | **0**        |
 
 I had a template I iterated three times. The version I ended on:
 
@@ -28,7 +28,7 @@ I had a template I iterated three times. The version I ended on:
 
 Being honest with myself, three reasons — in order of how much I think each one mattered:
 
-1. **No live link.** This is the big one. Every reply I got asked some version of "is there a demo?" Eng Ops people are *especially* skeptical of unsolicited DMs without a working artefact behind them. I didn't deploy until day 7. Asking strangers for 15 minutes before having anything to show them put the burden of imagination on them, and most reasonable people don't accept that burden from a stranger.
+1. **No live link.** This is the big one. Every reply I got asked some version of "is there a demo?" Eng Ops people are _especially_ skeptical of unsolicited DMs without a working artefact behind them. I didn't deploy until day 7. Asking strangers for 15 minutes before having anything to show them put the burden of imagination on them, and most reasonable people don't accept that burden from a stranger.
 2. **Wrong messenger.** I'm a college student with a tiny following. Cold DM credibility on X scales hard with the sender's profile. If a known Eng leader (or someone from Credex with their existing relationships) had sent the same template, the reply rate would probably have been 5–10× higher.
 3. **Wrong timing.** I sent most DMs over a weekend / through the workweek of a US holiday period. Bad call.
 
@@ -52,8 +52,8 @@ That's one weak data point, not three interviews. I'm flagging it as such.
 
 - Deploy the live demo (already done by submission day) and re-send the same 34 DMs with the working link.
 - Book a real 15-minute call with the senior who said "when it's live."
-- Post the YC teardown idea from `GTM.md` on Rands #tools. That's a *channel*, not an interview, but it should generate inbound conversations.
+- Post the YC teardown idea from `GTM.md` on Rands #tools. That's a _channel_, not an interview, but it should generate inbound conversations.
 
 If I'm given the internship, the first week's work product will be the three interviews I didn't get this week.
 
-— Anant
+- Divyansh Sahu
